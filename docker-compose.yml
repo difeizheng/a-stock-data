@@ -1,0 +1,27 @@
+services:
+  stock-report:
+    build: .
+    container_name: a-stock-report
+    volumes:
+      - ./reports:/app/reports
+      - ./filtered_stocks.json:/app/filtered_stocks.json
+      - ./progress_checkpoint.json:/app/progress_checkpoint.json
+    environment:
+      - PYTHONUNBUFFERED=1
+      - TZ=Asia/Shanghai
+    command: ["python", "batch_runner.py"]
+    restart: "no"
+
+  stock-scan:
+    build: .
+    container_name: a-stock-scan
+    volumes:
+      - ./reports:/app/reports
+      - ./filtered_stocks.json:/app/filtered_stocks.json
+    environment:
+      - PYTHONUNBUFFERED=1
+      - TZ=Asia/Shanghai
+    command: ["python", "batch_runner.py", "--scan-only"]
+    restart: "no"
+    profiles:
+      - scan
