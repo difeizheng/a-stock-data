@@ -1,9 +1,11 @@
 # a-stock-data
 
-A 股全栈数据工具包 — 7 层架构 · 28 个端点 · 13 个数据源 · 零第三方数据封装依赖
+A 股全栈数据工具包 — 10 层架构 · 40 个端点 · 13 个数据源 · 零第三方数据封装依赖
 
 一个自包含的 Skill 文件，把分散在 13 个数据源里的 A 股原始数据整合成 AI 编程助手直接能用的工具集。你不用再背 mootdx 的 K 线参数、东财的 PDF Referer 头、iwencai 的 X-Claw 鉴权——全部封装好了。
 
+> **V3.3.0 新增三层（2026-06-28）：** ① **打板层**（#23 / #15）——东财涨停 / 炸板 / 跌停 / 昨日涨停四池 + 同花顺涨停揭秘（涨停原因题材 / 封板成功率）+ 打板情绪速算（炸板率 / 连板梯队）；② **ETF 期权层**（#13）——50ETF / 300ETF 等期权 T型报价 + 希腊字母 + 隐含波动率（新浪源，免本地算 BSM）；③ **舆情互动层**——互动易问答（公司如何回应投资者）+ 同花顺热榜 + 东财人气榜 + 个股概念命中。另显式补充 ETF 支持说明。端点 28→40，层数 7→10。
+>
 > **V3.2.5 修复（2026-06-28 · #31 / #28）：** ① **分钟 K 线参数 Bug（CRITICAL）**——`bars()` 参数名误写 `category`（实为 `frequency`），被 `**kwargs` 静默吞掉、永远退化成日线，分钟/周/月线全取不到 → 改正参数名 + 按源码重写频率值表 + 补 1分钟/5分钟示例；② **复权口径**——mootdx `bars` 返回**不复权**原始价，补跨除权日须自行复权的警示；③ **`full_valuation` EPS 取错列**——旧 `iloc[2]` 取的是同花顺「最小值」而非「均值＝机构一致预期EPS」，致 PE_fwd/PEG 系统性偏差 → 改按列名取；④ `em_get()` 加连接级自动重试。
 >
 > **V3.2.4 修复（2026-06-20 · #26）：** **mootdx 0.11.x 全新安装 BESTIP 空串崩溃**——干净环境裸调 `Quotes.factory()` 抛 `ValueError: not enough values to unpack`（老用户 config 已填 IP 不触发，故易漏测）。新增 `tdx_client()` helper（TCP 探测可用服务器 + 三级 fallback）统一替换 4 处 mootdx 调用，对 0.10/0.11 通用、不锁版本（锁 0.10.12 反而在部分 Python 下 import 崩）。
@@ -27,7 +29,7 @@ A 股全栈数据工具包 — 7 层架构 · 28 个端点 · 13 个数据源 ·
 ## 架构
 
 ```
-A 股全栈数据 · 七层架构 · V3.2.5
+A 股全栈数据 · 十层架构 · V3.3.0
 │  （优先级：mootdx/腾讯 不封IP 优先用；东财仅用于独有数据，已内置限流防封）
 ├── 行情层    mootdx + 腾讯财经 + 百度K线   K线(带MA5/10/20) + 五档盘口 + PE/PB/市值 + 指数/ETF
 ├── 研报层    东财 reportapi + 同花顺 + iwencai  个股研报 / 行业研报 / PDF下载 / 一致预期 / NL搜索
@@ -36,7 +38,10 @@ A 股全栈数据 · 七层架构 · V3.2.5
 ├── 资金面    东财 datacenter + push2        融资融券 + 大宗交易 + 股东户数 + 分红送转 + 资金流(分钟+120日)
 ├── 新闻层    东财（直连HTTP）              个股新闻 / 全球资讯（财联社快讯已下线）
 ├── 基础数据  mootdx + 东财 + 新浪           季报37字段 / F10九大类 / 财报三表
-└── 公告层    巨潮 cninfo + mootdx           沪深北全量公告
+├── 公告层    巨潮 cninfo + mootdx           沪深北全量公告
+├── 打板层    东财 push2ex + 同花顺          涨停池 / 炸板 / 跌停 / 昨涨停 / 涨停原因题材 / 连板梯队  ★V3.3
+├── 期权层    新浪 hq.sinajs                ETF期权 T型报价 / 希腊字母 / 隐含波动率 IV  ★V3.3
+└── 舆情互动  巨潮互动易 + 同花顺 + 东财     互动易问答 / 同花顺热榜 / 东财人气榜 / 概念命中  ★V3.3
 ```
 
 ---
@@ -63,7 +68,7 @@ pip install mootdx requests pandas stockstats
 
 ---
 
-## 28 个端点能力清单
+## 40 个端点能力清单
 
 ### 行情层（实时，不封 IP）
 
@@ -125,6 +130,33 @@ pip install mootdx requests pandas stockstats
 | 新浪财报三表 | 资产负债表/利润表/现金流量表（直连 quotes.sina.cn） |
 | 巨潮公告 | 沪深北交所全量公告 |
 
+### 打板层（V3.3 新增）
+
+| 端点 | 数据 |
+|------|------|
+| 东财涨停池 | 连板数 / 几天几板 / 封板资金 / 炸板次数 / 首末封板时间 / 所属行业 |
+| 东财炸板池 | 曾涨停后开板 + 振幅 / 涨速 |
+| 东财跌停池 | 封单资金 / 连续跌停天数 / 开板次数 / 板上成交额 |
+| 东财昨日涨停池 | 昨涨停今表现（自算晋级率 / 赚钱效应） |
+| 同花顺涨停揭秘 | 涨停原因题材 / 封板成功率 / 一字·换手·T字板 / 封单额 |
+
+### ETF 期权层（V3.3 新增）
+
+| 端点 | 数据 |
+|------|------|
+| 期权合约清单 | 50ETF / 300ETF / 科创50ETF / 500ETF 各月份认购认沽合约 |
+| T型报价 | 买卖五档 / 持仓量 / 行权价 / 最新价 / 成交量额 |
+| 希腊字母 + IV | Delta / Gamma / Theta / Vega / 隐含波动率 / 理论价值（交易所预算，免本地算 BSM） |
+
+### 舆情互动层（V3.3 新增）
+
+| 端点 | 数据 |
+|------|------|
+| 互动易问答 | 投资者提问 + 公司官方回复（AI 问答独家信源：公司如何回应某传闻/利好） |
+| 同花顺热榜 | 人气值 / 概念标签 / 排名变化 |
+| 东财人气榜 | 排名 + 排名变化 + 名称价格 |
+| 东财个股概念命中 | 这只票当下被市场归到哪些概念在炒 + 热度值 |
+
 ### 鉴权要求
 
 除 iwencai 外，其余所有数据源**完全免费无 Key**。仅 iwencai 语义搜索需要 API Key（[申请地址](https://www.iwencai.com/skillhub)）。
@@ -151,6 +183,12 @@ pip install mootdx requests pandas stockstats
 | 大宗交易 | 「这只票最近有没有大宗交易，溢价还是折价」 |
 | 股东户数 | 「000858 股东户数在增加还是减少，筹码集中吗」 |
 | 分红送转 | 「茅台历年分红派息多少」 |
+| **ETF 行情** | 「510050 上证50ETF 现在什么价、今天涨跌多少」 |
+| **涨停打板** | 「今天涨停多少家、最高几连板、炸板率多少」 |
+| **涨停归因** | 「今天涨停的票都是什么题材，哪些是几天几板」 |
+| **ETF 期权** | 「50ETF 平值期权的隐含波动率和 Delta 是多少」 |
+| **互动易** | 「比亚迪最近投资者都在问什么，公司怎么回应的」 |
+| **市场热度** | 「今天哪些票最热门，被归到什么概念在炒」 |
 | 新闻公告 | 「拉一下 300476 最近的新闻和公告」 |
 | 批量对比 | 「帮我对比这 5 只半导体股的估值」 |
 
@@ -164,6 +202,16 @@ pip install mootdx requests pandas stockstats
 | 新标的调研 | 机构覆盖 → 估值 → 概念板块 → 资金流向 → 龙虎榜 → 解禁 → 两融 | 1 分钟 |
 
 ---
+
+## V3.3.0 亮点
+
+| 变化 | 说明 |
+|------|------|
+| **打板层（新增一层 · #23 / #15）** | 东财涨停板四池（涨停 / 炸板 / 跌停 / 昨日涨停，走 `push2ex` 与现有 push2 同源限流）+ 同花顺涨停揭秘（涨停原因题材 / 封板成功率 / 板型）+ 打板情绪速算（炸板率 / 连板梯队）。连板梯队、晋级率、题材归因一站到位 |
+| **ETF 期权层（新增一层 · #13）** | 50ETF / 300ETF / 科创50ETF / 500ETF 期权 T型报价 + 希腊字母（Delta / Gamma / Theta / Vega）+ 隐含波动率。新浪源，**交易所预算好、不用本地算 BSM** |
+| **舆情互动层（新增一层）** | 互动易问答（投资者提问 + 公司回复，AI 能答"公司如何回应某传闻 / 利好"，别处拿不到）+ 同花顺热榜 + 东财人气榜 + 个股概念命中 |
+| **ETF 支持显式说明** | ETF 行情 / K线一直支持（腾讯 + mootdx，代码直接当股票查），本版在使用示例表显式补上 ETF 例子，避免被看漏 |
+| **端点 28 → 40，层数 7 → 10** | 三个新层全部免登录、零鉴权；东财源走现有 `em_get` 限流防封 |
 
 ## V3.2.5 亮点
 
@@ -296,10 +344,12 @@ V2.1 改为本地自缓存。每次调用自动积累，越跑越丰富。首次
 
 # a-stock-data
 
-Full-stack data toolkit for China A-Share market — 7-layer architecture · 28 endpoints · 13 data sources · zero third-party data wrapper dependencies
+Full-stack data toolkit for China A-Share market — 10-layer architecture · 40 endpoints · 13 data sources · zero third-party data wrapper dependencies
 
 A self-contained Skill file that consolidates raw A-share data from 13 sources into a ready-to-use toolkit for AI coding assistants. No need to memorize mootdx candlestick parameters, Eastmoney PDF Referer headers, or iwencai X-Claw authentication — it's all handled.
 
+> **V3.3.0 — three new layers (2026-06-28):** ① **Limit-Up layer** (#23/#15) — Eastmoney limit-up/break/limit-down/prev-day pools + THS limit-up insight (reasons/seal rate) + sentiment quick-calc (break rate/board ladder); ② **ETF Options layer** (#13) — 50ETF/300ETF option T-quotes + Greeks + implied vol (Sina, no local BSM); ③ **Sentiment layer** — investor Q&A (how companies respond to investors) + THS hot list + EM popularity rank. Plus an explicit ETF-support note. Endpoints 28→40, layers 7→10.
+>
 > **V3.2.5 Fix (2026-06-28 · #31 / #28):** ① **Minute K-line parameter bug (CRITICAL)** — `bars()` used a non-existent param name `category` (the real one is `frequency`); it got silently swallowed by `**kwargs`, so `frequency` always defaulted to 9 (daily) and minute/weekly/monthly requests silently degraded to daily with no error. Fixed the param name, rewrote the frequency table from mootdx source, added 1-min/5-min examples. ② **Adjustment** — mootdx `bars` returns **unadjusted** raw prices; added a warning to adjust manually across ex-dividend dates. ③ **`full_valuation` read the wrong EPS column** — old `iloc[2]` picked the THS "min" column instead of "mean = consensus EPS", biasing PE_fwd/PEG → now picks by column name. ④ `em_get()` now has connection-level retry.
 >
 > **V3.2.4 Fix (2026-06-20 · #26):** **mootdx 0.11.x fresh-install BESTIP crash** — on a clean machine a bare `Quotes.factory()` throws `ValueError: not enough values to unpack` (existing users whose config already holds IPs never hit it, so it was easy to miss). Added a `tdx_client()` helper (TCP-probes a built-in server list + 3-level fallback) and routed all 4 mootdx calls through it; works on 0.10/0.11 with no version pin (pinning 0.10.12 actually crashes on import under some Pythons).
@@ -323,7 +373,7 @@ A self-contained Skill file that consolidates raw A-share data from 13 sources i
 ## Architecture
 
 ```
-China A-Share Full-Stack Data · 7-Layer Architecture · V3.2.5
+China A-Share Full-Stack Data · 10-Layer Architecture · V3.3.0
 │  (Priority: prefer mootdx/Tencent — never IP-banned; Eastmoney only for exclusive data, with built-in throttling)
 ├── Market Data    mootdx + Tencent + Baidu K-line   Candlesticks (w/ MA5/10/20) + Order Book + PE/PB + Index/ETF
 ├── Research       Eastmoney + THS + iwencai          Stock reports / Industry reports / PDF / Consensus EPS / NL search
@@ -332,7 +382,10 @@ China A-Share Full-Stack Data · 7-Layer Architecture · V3.2.5
 ├── Capital Flow   Eastmoney datacenter + push2       Margin trading + Block trades + Holder count + Dividends + Fund flow(min+120d)
 ├── News           Eastmoney (direct HTTP)            Stock news / Global finance (CLS flash deprecated)
 ├── Fundamentals   mootdx + Eastmoney + Sina          37-field quarterly + F10 9 categories + Financial statements
-└── Filings        cninfo + mootdx                    Full filings across SSE / SZSE / BSE
+├── Filings        cninfo + mootdx                    Full filings across SSE / SZSE / BSE
+├── Limit-Up       Eastmoney push2ex + THS            ZT/ZB/DT/prev-ZT pools / limit reasons / consecutive-board ladder  ★V3.3
+├── Options        Sina hq.sinajs                     ETF option T-quotes / Greeks / implied volatility  ★V3.3
+└── Sentiment      cninfo IRM + THS + Eastmoney       Investor Q&A / hot lists / popularity rank / concept hits  ★V3.3
 ```
 
 ---
@@ -421,6 +474,33 @@ Launch Claude Code and say "Check the valuation of 688017" — the skill activat
 | Sina Financial Statements | Balance sheet / Income statement / Cash flow (direct quotes.sina.cn) |
 | cninfo Filings | Full filings across all exchanges |
 
+### Limit-Up / Limit-Down (V3.3 new)
+
+| Endpoint | Data |
+|----------|------|
+| EM Limit-Up Pool | Consecutive boards / N-day-M-board / seal fund / break count / seal time / industry |
+| EM Break-Board Pool | Opened after limit-up + amplitude / speed |
+| EM Limit-Down Pool | Seal fund / consecutive limit-down / open count / board turnover |
+| EM Prev-Day Limit-Up Pool | Yesterday's limit-up performance today (promotion rate / profit effect) |
+| THS Limit-Up Insight | Limit reason themes / seal success rate / board type / seal amount |
+
+### ETF Options (V3.3 new)
+
+| Endpoint | Data |
+|----------|------|
+| Option Contract List | 50ETF / 300ETF / STAR50 ETF / 500ETF call & put contracts by month |
+| T-Quote | Bid/ask 5 levels / open interest / strike / last / volume |
+| Greeks + IV | Delta / Gamma / Theta / Vega / implied vol / theoretical value (exchange-computed, no local BSM) |
+
+### Sentiment & Interaction (V3.3 new)
+
+| Endpoint | Data |
+|----------|------|
+| Investor Q&A (IRM) | Investor questions + official company replies (unique source: how a company responds to rumors/news) |
+| THS Hot List | Popularity / concept tags / rank change |
+| EM Popularity Rank | Rank + rank change + name/price |
+| EM Stock Concept Hits | Which concepts the market is grouping this stock under + heat |
+
 ### Authentication
 
 All data sources except iwencai are **completely free, no API key needed**. Only iwencai semantic search requires an API key ([apply here](https://www.iwencai.com/skillhub)).
@@ -447,6 +527,12 @@ Just tell your AI assistant:
 | Block Trades | "Any recent block trades for this stock, premium or discount" |
 | Shareholder Count | "Is 000858 shareholder count increasing or decreasing" |
 | Dividends | "How much has Moutai paid in dividends over the years" |
+| ETF Quote | "What's the price of 510050 (SSE 50 ETF) and today's change" |
+| Limit-Up Sentiment | "How many stocks hit limit-up today, highest consecutive boards, break rate" |
+| Limit-Up Themes | "What themes drove today's limit-ups, which are multi-day boards" |
+| ETF Options | "What's the implied vol and Delta of the at-the-money 50ETF option" |
+| Investor Q&A | "What are investors asking BYD recently and how did the company respond" |
+| Market Heat | "Which stocks are hottest today and what concepts are they grouped under" |
 | News & Filings | "Pull recent news and filings for 300476" |
 | Batch Compare | "Compare valuations of these 5 semiconductor stocks" |
 
@@ -460,6 +546,16 @@ Just tell your AI assistant:
 | New Target Research | Coverage → Valuation → Concepts → Fund flow → Dragon tiger → Lockup → Margin | 1 min |
 
 ---
+
+## V3.3.0 Highlights
+
+| Change | Description |
+|--------|-------------|
+| **Limit-Up Layer (new · #23 / #15)** | Eastmoney's four limit-board pools (limit-up / break / limit-down / prev-day, via `push2ex`, same throttle as push2) + THS limit-up insight (limit reasons / seal success rate / board type) + sentiment quick-calc (break rate / consecutive-board ladder) |
+| **ETF Options Layer (new · #13)** | 50ETF / 300ETF / STAR50 / 500ETF option T-quotes + Greeks (Delta/Gamma/Theta/Vega) + implied volatility. Sina source, **exchange-computed, no local BSM** |
+| **Sentiment Layer (new)** | Investor Q&A (questions + company replies — answers "how does a company respond to a rumor/news", unavailable elsewhere) + THS hot list + EM popularity rank + concept hits |
+| **Explicit ETF note** | ETF quotes/K-line were always supported (Tencent + mootdx, query by code like a stock); this version adds explicit ETF examples so it's not overlooked |
+| **Endpoints 28 → 40, layers 7 → 10** | All three new layers are login-free, zero-auth; Eastmoney sources use the existing `em_get` throttle |
 
 ## V3.2.5 Highlights
 
