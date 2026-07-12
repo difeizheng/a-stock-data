@@ -1,0 +1,37 @@
+# ===== 个人投资工作台（敏感：含策略/持仓/调研，整目录不进公开仓库）=====
+small_goal/
+
+# ===== 凭证 / 密钥（绝不提交）=====
+small_goal/dingtalk_config.json
+*.secret
+*.key
+.env
+*.env
+
+# ===== Excel 临时锁文件 =====
+~$*.xlsx
+~$*.xls
+~$*.xlsm
+
+# ===== Python 缓存 =====
+__pycache__/
+*.py[cod]
+*.pyc
+.pytest_cache/
+*.egg-info/
+.eggs/
+
+# ===== 本地命令日志 =====
+2026-*-local-command-caveat*.txt
+
+# ===== 大体积数据/报告缓存（按需保留可注释掉）=====
+small_goal/reports/*.html
+small_goal/data/*.json
+small_goal/price_cache.json
+reports小白版/
+
+# ===== IDE / OS =====
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

@@ -1,0 +1,467 @@
+[
+  {
+    "code": "000100",
+    "name": "TCL科技",
+    "prefix": "sz"
+  },
+  {
+    "code": "601360",
+    "name": "三六零",
+    "prefix": "sh"
+  },
+  {
+    "code": "601229",
+    "name": "上海银行",
+    "prefix": "sh"
+  },
+  {
+    "code": "002602",
+    "name": "世纪华通",
+    "prefix": "sz"
+  },
+  {
+    "code": "300059",
+    "name": "东方财富",
+    "prefix": "sz"
+  },
+  {
+    "code": "000708",
+    "name": "中信特钢",
+    "prefix": "sz"
+  },
+  {
+    "code": "601998",
+    "name": "中信银行",
+    "prefix": "sh"
+  },
+  {
+    "code": "000063",
+    "name": "中兴通讯",
+    "prefix": "sz"
+  },
+  {
+    "code": "601390",
+    "name": "中国中铁",
+    "prefix": "sh"
+  },
+  {
+    "code": "601800",
+    "name": "中国交建",
+    "prefix": "sh"
+  },
+  {
+    "code": "601668",
+    "name": "中国建筑",
+    "prefix": "sh"
+  },
+  {
+    "code": "601088",
+    "name": "中国神华",
+    "prefix": "sh"
+  },
+  {
+    "code": "600050",
+    "name": "中国联通",
+    "prefix": "sh"
+  },
+  {
+    "code": "601186",
+    "name": "中国铁建",
+    "prefix": "sh"
+  },
+  {
+    "code": "600522",
+    "name": "中天科技",
+    "prefix": "sh"
+  },
+  {
+    "code": "688012",
+    "name": "中微公司",
+    "prefix": "sh"
+  },
+  {
+    "code": "002080",
+    "name": "中材科技",
+    "prefix": "sz"
+  },
+  {
+    "code": "603019",
+    "name": "中科曙光",
+    "prefix": "sh"
+  },
+  {
+    "code": "688981",
+    "name": "中芯国际",
+    "prefix": "sh"
+  },
+  {
+    "code": "601328",
+    "name": "交通银行",
+    "prefix": "sh"
+  },
+  {
+    "code": "688036",
+    "name": "传音控股",
+    "prefix": "sh"
+  },
+  {
+    "code": "300136",
+    "name": "信维通信",
+    "prefix": "sz"
+  },
+  {
+    "code": "300450",
+    "name": "先导智能",
+    "prefix": "sz"
+  },
+  {
+    "code": "601818",
+    "name": "光大银行",
+    "prefix": "sh"
+  },
+  {
+    "code": "002281",
+    "name": "光迅科技",
+    "prefix": "sz"
+  },
+  {
+    "code": "001227",
+    "name": "兰州银行",
+    "prefix": "sz"
+  },
+  {
+    "code": "601169",
+    "name": "北京银行",
+    "prefix": "sh"
+  },
+  {
+    "code": "002371",
+    "name": "北方华创",
+    "prefix": "sz"
+  },
+  {
+    "code": "600015",
+    "name": "华夏银行",
+    "prefix": "sh"
+  },
+  {
+    "code": "000988",
+    "name": "华工科技",
+    "prefix": "sz"
+  },
+  {
+    "code": "688396",
+    "name": "华润微",
+    "prefix": "sh"
+  },
+  {
+    "code": "000932",
+    "name": "华菱钢铁",
+    "prefix": "sz"
+  },
+  {
+    "code": "300857",
+    "name": "协创数据",
+    "prefix": "sz"
+  },
+  {
+    "code": "601009",
+    "name": "南京银行",
+    "prefix": "sh"
+  },
+  {
+    "code": "601187",
+    "name": "厦门银行",
+    "prefix": "sh"
+  },
+  {
+    "code": "300033",
+    "name": "同花顺",
+    "prefix": "sz"
+  },
+  {
+    "code": "300661",
+    "name": "圣邦股份",
+    "prefix": "sz"
+  },
+  {
+    "code": "300394",
+    "name": "天孚通信",
+    "prefix": "sz"
+  },
+  {
+    "code": "600377",
+    "name": "宁沪高速",
+    "prefix": "sh"
+  },
+  {
+    "code": "688256",
+    "name": "寒武纪",
+    "prefix": "sh"
+  },
+  {
+    "code": "600350",
+    "name": "山东高速",
+    "prefix": "sh"
+  },
+  {
+    "code": "601128",
+    "name": "常熟银行",
+    "prefix": "sh"
+  },
+  {
+    "code": "000001",
+    "name": "平安银行",
+    "prefix": "sz"
+  },
+  {
+    "code": "002839",
+    "name": "张家港行",
+    "prefix": "sz"
+  },
+  {
+    "code": "601838",
+    "name": "成都银行",
+    "prefix": "sh"
+  },
+  {
+    "code": "688072",
+    "name": "拓荆科技",
+    "prefix": "sh"
+  },
+  {
+    "code": "600036",
+    "name": "招商银行",
+    "prefix": "sh"
+  },
+  {
+    "code": "600908",
+    "name": "无锡银行",
+    "prefix": "sh"
+  },
+  {
+    "code": "601001",
+    "name": "晋控煤业",
+    "prefix": "sh"
+  },
+  {
+    "code": "603228",
+    "name": "景旺电子",
+    "prefix": "sh"
+  },
+  {
+    "code": "600035",
+    "name": "楚天高速",
+    "prefix": "sh"
+  },
+  {
+    "code": "600016",
+    "name": "民生银行",
+    "prefix": "sh"
+  },
+  {
+    "code": "600919",
+    "name": "江苏银行",
+    "prefix": "sh"
+  },
+  {
+    "code": "002807",
+    "name": "江阴银行",
+    "prefix": "sz"
+  },
+  {
+    "code": "601916",
+    "name": "浙商银行",
+    "prefix": "sh"
+  },
+  {
+    "code": "600023",
+    "name": "浙能电力",
+    "prefix": "sh"
+  },
+  {
+    "code": "600000",
+    "name": "浦发银行",
+    "prefix": "sh"
+  },
+  {
+    "code": "000977",
+    "name": "浪潮信息",
+    "prefix": "sz"
+  },
+  {
+    "code": "688041",
+    "name": "海光信息",
+    "prefix": "sh"
+  },
+  {
+    "code": "002415",
+    "name": "海康威视",
+    "prefix": "sz"
+  },
+  {
+    "code": "600585",
+    "name": "海螺水泥",
+    "prefix": "sh"
+  },
+  {
+    "code": "300442",
+    "name": "润泽科技",
+    "prefix": "sz"
+  },
+  {
+    "code": "000021",
+    "name": "深科技",
+    "prefix": "sz"
+  },
+  {
+    "code": "600548",
+    "name": "深高速",
+    "prefix": "sh"
+  },
+  {
+    "code": "688008",
+    "name": "澜起科技",
+    "prefix": "sh"
+  },
+  {
+    "code": "600498",
+    "name": "烽火通信",
+    "prefix": "sh"
+  },
+  {
+    "code": "601231",
+    "name": "环旭电子",
+    "prefix": "sh"
+  },
+  {
+    "code": "000900",
+    "name": "现代投资",
+    "prefix": "sz"
+  },
+  {
+    "code": "601528",
+    "name": "瑞丰银行",
+    "prefix": "sh"
+  },
+  {
+    "code": "603893",
+    "name": "瑞芯微",
+    "prefix": "sh"
+  },
+  {
+    "code": "688183",
+    "name": "生益电子",
+    "prefix": "sh"
+  },
+  {
+    "code": "600183",
+    "name": "生益科技",
+    "prefix": "sh"
+  },
+  {
+    "code": "600012",
+    "name": "皖通高速",
+    "prefix": "sh"
+  },
+  {
+    "code": "002230",
+    "name": "科大讯飞",
+    "prefix": "sz"
+  },
+  {
+    "code": "000429",
+    "name": "粤高速Ａ",
+    "prefix": "sz"
+  },
+  {
+    "code": "002049",
+    "name": "紫光国微",
+    "prefix": "sz"
+  },
+  {
+    "code": "300476",
+    "name": "胜宏科技",
+    "prefix": "sz"
+  },
+  {
+    "code": "603323",
+    "name": "苏农银行",
+    "prefix": "sh"
+  },
+  {
+    "code": "002966",
+    "name": "苏州银行",
+    "prefix": "sz"
+  },
+  {
+    "code": "300433",
+    "name": "蓝思科技",
+    "prefix": "sz"
+  },
+  {
+    "code": "601997",
+    "name": "贵阳银行",
+    "prefix": "sh"
+  },
+  {
+    "code": "600269",
+    "name": "赣粤高速",
+    "prefix": "sh"
+  },
+  {
+    "code": "002156",
+    "name": "通富微电",
+    "prefix": "sz"
+  },
+  {
+    "code": "601658",
+    "name": "邮储银行",
+    "prefix": "sh"
+  },
+  {
+    "code": "688111",
+    "name": "金山办公",
+    "prefix": "sh"
+  },
+  {
+    "code": "002202",
+    "name": "金风科技",
+    "prefix": "sz"
+  },
+  {
+    "code": "301165",
+    "name": "锐捷网络",
+    "prefix": "sz"
+  },
+  {
+    "code": "300604",
+    "name": "长川科技",
+    "prefix": "sz"
+  },
+  {
+    "code": "601577",
+    "name": "长沙银行",
+    "prefix": "sh"
+  },
+  {
+    "code": "600584",
+    "name": "长电科技",
+    "prefix": "sh"
+  },
+  {
+    "code": "603501",
+    "name": "韦尔股份",
+    "prefix": "sh"
+  },
+  {
+    "code": "300475",
+    "name": "香农芯创",
+    "prefix": "sz"
+  },
+  {
+    "code": "688047",
+    "name": "龙芯中科",
+    "prefix": "sh"
+  }
+]
