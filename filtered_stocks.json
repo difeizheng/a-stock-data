@@ -1,0 +1,464 @@
+{
+  "红利候选": [
+    {
+      "code": "601398",
+      "name": "工商银行",
+      "industry": "银行",
+      "price": 7.18,
+      "pe": 6.89,
+      "market_cap": 19358.16
+    },
+    {
+      "code": "601939",
+      "name": "建设银行",
+      "industry": "银行",
+      "price": 10.31,
+      "pe": 7.89,
+      "market_cap": 989.11
+    },
+    {
+      "code": "601288",
+      "name": "农业银行",
+      "industry": "银行",
+      "price": 6.42,
+      "pe": 7.63,
+      "market_cap": 20495.48
+    },
+    {
+      "code": "601988",
+      "name": "中国银行",
+      "industry": "银行",
+      "price": 5.91,
+      "pe": 7.76,
+      "market_cap": 12456.24
+    },
+    {
+      "code": "600000",
+      "name": "浦发银行",
+      "industry": "银行",
+      "price": 9.27,
+      "pe": 6.14,
+      "market_cap": 3087.45
+    },
+    {
+      "code": "600016",
+      "name": "民生银行",
+      "industry": "银行",
+      "price": 3.52,
+      "pe": 5.25,
+      "market_cap": 1248.27
+    },
+    {
+      "code": "600028",
+      "name": "中国石化",
+      "industry": "石油",
+      "price": 4.87,
+      "pe": 16.57,
+      "market_cap": 4614.45
+    },
+    {
+      "code": "600019",
+      "name": "宝钢股份",
+      "industry": "钢铁",
+      "price": 6.04,
+      "pe": 12.98,
+      "market_cap": 1315.64
+    },
+    {
+      "code": "600036",
+      "name": "招商银行",
+      "industry": "银行",
+      "price": 37.0,
+      "pe": 6.19,
+      "market_cap": 7632.71
+    },
+    {
+      "code": "601166",
+      "name": "兴业银行",
+      "industry": "银行",
+      "price": 17.83,
+      "pe": 4.87,
+      "market_cap": 3773.34
+    },
+    {
+      "code": "600900",
+      "name": "长江电力",
+      "industry": "电力",
+      "price": 27.14,
+      "pe": 18.4,
+      "market_cap": 6640.67
+    },
+    {
+      "code": "600886",
+      "name": "国投电力",
+      "industry": "电力",
+      "price": 13.87,
+      "pe": 14.94,
+      "market_cap": 1033.89
+    },
+    {
+      "code": "601628",
+      "name": "中国人寿",
+      "industry": "金融业",
+      "price": 33.8,
+      "pe": 6.6,
+      "market_cap": 7038.35
+    },
+    {
+      "code": "601328",
+      "name": "交通银行",
+      "industry": "银行",
+      "price": 6.6,
+      "pe": 6.05,
+      "market_cap": 1720.78
+    },
+    {
+      "code": "600009",
+      "name": "上海机场",
+      "industry": "交通运输",
+      "price": 25.61,
+      "pe": 29.29,
+      "market_cap": 524.05
+    },
+    {
+      "code": "600026",
+      "name": "中远海能",
+      "industry": "航运",
+      "price": 21.23,
+      "pe": 21.09,
+      "market_cap": 811.41
+    },
+    {
+      "code": "601006",
+      "name": "大秦铁路",
+      "industry": "交通运输",
+      "price": 5.26,
+      "pe": 18.55,
+      "market_cap": 1059.74
+    },
+    {
+      "code": "601818",
+      "name": "光大银行",
+      "industry": "银行",
+      "price": 3.09,
+      "pe": 4.83,
+      "market_cap": 1433.97
+    },
+    {
+      "code": "600015",
+      "name": "华夏银行",
+      "industry": "银行",
+      "price": 6.75,
+      "pe": 3.96,
+      "market_cap": 1038.64
+    },
+    {
+      "code": "601229",
+      "name": "上海银行",
+      "industry": "银行",
+      "price": 9.06,
+      "pe": 5.31,
+      "market_cap": 1287.34
+    },
+    {
+      "code": "600919",
+      "name": "江苏银行",
+      "industry": "银行",
+      "price": 11.05,
+      "pe": 5.74,
+      "market_cap": 2027.82
+    },
+    {
+      "code": "600928",
+      "name": "紫金银行",
+      "industry": "银行",
+      "price": 3.53,
+      "pe": 5.82,
+      "market_cap": 156.14
+    },
+    {
+      "code": "601577",
+      "name": "长沙银行",
+      "industry": "银行",
+      "price": 9.31,
+      "pe": 4.55,
+      "market_cap": 374.33
+    },
+    {
+      "code": "002807",
+      "name": "江阴银行",
+      "industry": "银行",
+      "price": 4.43,
+      "pe": 5.3,
+      "market_cap": 108.88
+    },
+    {
+      "code": "002948",
+      "name": "青岛银行",
+      "industry": "银行",
+      "price": 5.62,
+      "pe": 6.0,
+      "market_cap": 174.92
+    },
+    {
+      "code": "600917",
+      "name": "重庆燃气",
+      "industry": "燃气",
+      "price": 5.34,
+      "pe": 37.0,
+      "market_cap": 83.36
+    },
+    {
+      "code": "600642",
+      "name": "申能股份",
+      "industry": "电力",
+      "price": 9.77,
+      "pe": 12.61,
+      "market_cap": 478.13
+    },
+    {
+      "code": "600795",
+      "name": "国电电力",
+      "industry": "电力",
+      "price": 4.95,
+      "pe": 13.08,
+      "market_cap": 882.86
+    },
+    {
+      "code": "600023",
+      "name": "浙能电力",
+      "industry": "电力",
+      "price": 6.08,
+      "pe": 11.02,
+      "market_cap": 815.25
+    },
+    {
+      "code": "601669",
+      "name": "中国电建",
+      "industry": "建筑",
+      "price": 5.43,
+      "pe": 10.02,
+      "market_cap": 709.78
+    },
+    {
+      "code": "601390",
+      "name": "中国中铁",
+      "industry": "建筑",
+      "price": 4.8,
+      "pe": 5.58,
+      "market_cap": 982.98
+    },
+    {
+      "code": "601186",
+      "name": "中国铁建",
+      "industry": "建筑",
+      "price": 6.34,
+      "pe": 4.89,
+      "market_cap": 729.31
+    },
+    {
+      "code": "601668",
+      "name": "中国建筑",
+      "industry": "建筑",
+      "price": 4.76,
+      "pe": 5.18,
+      "market_cap": 1966.85
+    }
+  ],
+  "进攻候选": [
+    {
+      "code": "688981",
+      "name": "中芯国际",
+      "industry": "半导体",
+      "price": 149.18,
+      "pe": 236.92,
+      "market_cap": 2982.95
+    },
+    {
+      "code": "002230",
+      "name": "科大讯飞",
+      "industry": "人工智能",
+      "price": 49.25,
+      "pe": 137.1,
+      "market_cap": 1078.23
+    },
+    {
+      "code": "603986",
+      "name": "兆易创新",
+      "industry": "半导体",
+      "price": 526.22,
+      "pe": 128.34,
+      "market_cap": 3514.33
+    },
+    {
+      "code": "002049",
+      "name": "紫光国微",
+      "industry": "半导体",
+      "price": 82.95,
+      "pe": 42.66,
+      "market_cap": 704.67
+    },
+    {
+      "code": "600745",
+      "name": "闻泰科技",
+      "industry": "半导体",
+      "price": 17.86,
+      "pe": -2.42,
+      "market_cap": 222.3
+    },
+    {
+      "code": "002371",
+      "name": "北方华创",
+      "industry": "半导体",
+      "price": 670.25,
+      "pe": 87.13,
+      "market_cap": 4854.31
+    },
+    {
+      "code": "688012",
+      "name": "中微公司",
+      "industry": "半导体",
+      "price": 463.51,
+      "pe": 106.81,
+      "market_cap": 2914.74
+    },
+    {
+      "code": "002415",
+      "name": "海康威视",
+      "industry": "电子",
+      "price": 32.0,
+      "pe": 19.63,
+      "market_cap": 2894.85
+    },
+    {
+      "code": "000938",
+      "name": "紫光股份",
+      "industry": "软件",
+      "price": 28.9,
+      "pe": 38.9,
+      "market_cap": 826.56
+    },
+    {
+      "code": "600588",
+      "name": "用友网络",
+      "industry": "软件",
+      "price": 10.7,
+      "pe": -26.57,
+      "market_cap": 365.62
+    },
+    {
+      "code": "300750",
+      "name": "宁德时代",
+      "industry": "电子",
+      "price": 402.5,
+      "pe": 23.58,
+      "market_cap": 17134.0
+    },
+    {
+      "code": "300059",
+      "name": "东方财富",
+      "industry": "信息技术",
+      "price": 20.05,
+      "pe": 24.18,
+      "market_cap": 2674.22
+    },
+    {
+      "code": "002024",
+      "name": "苏宁易购",
+      "industry": "互联网",
+      "price": 1.16,
+      "pe": 155.56,
+      "market_cap": 107.34
+    },
+    {
+      "code": "300033",
+      "name": "同花顺",
+      "industry": "软件",
+      "price": 241.91,
+      "pe": 54.5,
+      "market_cap": 1060.56
+    },
+    {
+      "code": "688041",
+      "name": "海光信息",
+      "industry": "半导体",
+      "price": 341.16,
+      "pe": 290.88,
+      "market_cap": 7929.71
+    },
+    {
+      "code": "688256",
+      "name": "寒武纪",
+      "industry": "人工智能",
+      "price": 1410.96,
+      "pe": 326.28,
+      "market_cap": 8864.96
+    },
+    {
+      "code": "002410",
+      "name": "广联达",
+      "industry": "软件",
+      "price": 9.94,
+      "pe": 40.1,
+      "market_cap": 156.07
+    },
+    {
+      "code": "300474",
+      "name": "景嘉微",
+      "industry": "半导体",
+      "price": 64.54,
+      "pe": -203.36,
+      "market_cap": 262.34
+    },
+    {
+      "code": "603501",
+      "name": "韦尔股份",
+      "industry": "半导体",
+      "price": 106.07,
+      "pe": 36.33,
+      "market_cap": 1283.93
+    },
+    {
+      "code": "002241",
+      "name": "歌尔股份",
+      "industry": "电子",
+      "price": 27.3,
+      "pe": 24.39,
+      "market_cap": 858.1
+    },
+    {
+      "code": "300014",
+      "name": "亿纬锂能",
+      "industry": "电子",
+      "price": 63.36,
+      "pe": 30.74,
+      "market_cap": 1338.47
+    },
+    {
+      "code": "300124",
+      "name": "汇川技术",
+      "industry": "自动化",
+      "price": 80.88,
+      "pe": 46.19,
+      "market_cap": 1949.33
+    },
+    {
+      "code": "002475",
+      "name": "立讯精密",
+      "industry": "电子",
+      "price": 72.45,
+      "pe": 30.69,
+      "market_cap": 5271.43
+    },
+    {
+      "code": "000063",
+      "name": "中兴通讯",
+      "industry": "通信",
+      "price": 35.54,
+      "pe": 37.99,
+      "market_cap": 1431.42
+    }
+  ],
+  "筛选时间": "2026-05-27 02:01:07",
+  "总计": 57
+}
