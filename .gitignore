@@ -39,3 +39,6 @@ reports小白版/
 .idea/
 .DS_Store
 Thumbs.db
+
+# ===== pi 会话运行时（本机 harness 状态，不进仓库）=====
+.pi/
